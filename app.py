@@ -1,5 +1,5 @@
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
 import joblib
 import pandas as pd
 import os
@@ -24,16 +24,8 @@ except Exception as exc:
 # Home endpoint
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({
-        "message": "Bengaluru House Price Prediction API",
-        "status": "running",
-        "model_loaded": model is not None,
-        "endpoints": {
-            "home": "/",
-            "health": "/health",
-            "predict": "/predict"
-        }
-    })
+    return render_template("index.html")
+
 
 
 # Health check endpoint
